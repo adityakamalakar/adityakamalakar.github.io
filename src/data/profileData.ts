@@ -3,6 +3,7 @@ import { ProfileData } from '../types';
 export const profileData: ProfileData = {
   name: 'Aditya N. Kamalakar',
   prefix: 'Ar.',
+  photoUrl: 'images/aditya-kamalakar.jpg',
   titles: [
     'Architect',
     'Architectural Designer',

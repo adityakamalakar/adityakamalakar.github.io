@@ -127,6 +127,7 @@ export interface StudioIdentity {
 export interface ProfileData {
   name: string;
   prefix: string;
+  photoUrl?: string;
   titles: string[];
   headline: string;
   subheadline: string;
