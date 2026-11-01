@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Project, ProjectCategory, ProjectDrawing } from './types';
 import { projectsData } from './data/projectsData';
-import { profileData } from './data/profileData';
 
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
