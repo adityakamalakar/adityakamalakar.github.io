@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ar. Aditya N. Kamalakar | Architect & 3D Visualizer | Indraprastha Studio</title>
+  <meta name="description" content="Portfolio of Ar. Aditya N. Kamalakar (B.Arch, Dr. Baliram Hiray College of Architecture, Mumbai). Specializing in architectural design, working drawings, GFC detailing, interior design, and photorealistic 3D visualization." />
+  <meta name="keywords" content="Architect Aditya Kamalakar, Indraprastha Architects, Mumbai Architect, Working Drawings, GFC Detailing, Lumion 3D Visualization, D5 Render, Interior Design" />
+  <meta name="author" content="Ar. Aditya N. Kamalakar" />
+
+  <!-- OpenGraph / Social Sharing -->
+  <meta property="og:title" content="Ar. Aditya N. Kamalakar | Architect & 3D Visualizer" />
+  <meta property="og:description" content="Designing Spaces. Detailing Ideas. Visualizing Possibilities. High-precision architecture, construction detailing, and 3D visualization." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: {
+              900: '#101010',
+              800: '#141414',
+              700: '#181818',
+              600: '#222222',
+            },
+            bronze: {
+              light: '#E5C79E',
+              DEFAULT: '#B8976C',
+              dark: '#A38054',
+            },
+            offwhite: '#F9F8F6',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- React 18 & Babel Standalone for Instant In-Browser Execution -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      background-color: #141414;
+      color: #E0E0E0;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #141414;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2E2E2E;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B8976C;
+    }
+  </style>
+</head>
+<body class="bg-[#141414] text-[#E0E0E0] font-sans antialiased selection:bg-[#B8976C] selection:text-[#141414]">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useMemo, useRef } = React;
+
+    // --- DATA SECTION: PROFILE, PROJECTS, DRAWINGS, SERVICES ---
+    const profileData = {
+      name: 'Aditya N. Kamalakar',
+      prefix: 'Ar.',
+      titles: ['Architect', 'Architectural Designer', '3D Visualizer'],
+      headline: 'Designing Spaces. Detailing Ideas. Visualizing Possibilities.',
+      subheadline: 'Dedicated to delivering contextual architecture, buildable technical precision, and hyper-realistic visualization from concept through construction.',
+      bioParagraphs: [
+        'I am an architect and visualizer passionate about bridging architectural design intent with precise on-site execution. My training grounds me in rigorous spatial planning, National Building Code compliance, municipal drawing standards, and detailed construction documentation.',
+        'Throughout my academic and professional journey, I have cultivated a dual strength: translating complex client briefs into sensible architectural volumes, and developing high-fidelity 3D visual narratives and working drawing packages that make execution seamless on site.',
+        'Whether working on a multi-scale residential development, high-end interior transformation, or freelance visualization commission, I treat every millimeter with tectonic clarity, spatial empathy, and structural logic.'
+      ],
+      education: {
+        degree: 'Bachelor of Architecture (B.Arch)',
+        institution: 'Dr. Baliram Hiray College of Architecture',
+        location: 'Mumbai, Maharashtra, India',
+        description: 'Comprehensive 5-year professional architectural education covering architectural design studios, building construction & materials, structural design, building services, landscape architecture, town planning, and professional practice.',
+        coreFocus: [
+          'Architectural Design Studios (Residential, Commercial & Institutional)',
+          'Building Construction, Materials & Specifications',
+          'Good For Construction (GFC) & Municipal Submission Sets',
+          'Building Services (MEP, HVAC, Fire Fighting & Acoustics)',
+          'Architectural Visualization & Digital Fabrication',
+          'Urban Context, Climate-Responsive Design & By-laws'
+        ]
+      },
+      interests: [
+        'Architectural Design',
+        'Working Drawings & GFC Sets',
+        'Construction Detailing & Joinery',
+        'Interior Design & Millwork',
+        '3D Architectural Visualization',
+        'Tropical & Contextual Modernism',
+        'BIM & Computational Workflows'
+      ],
+      softwareSkills: [
+        {
+          category: 'Drafting, BIM & Technical',
+          items: [
+            { name: 'AutoCAD (2D & Detailing)', proficiency: 96, experience: 'Primary drafting & GFC engine' },
+            { name: 'Autodesk Revit (BIM)', proficiency: 88, experience: 'Parametric modeling & documentation' },
+            { name: 'SketchUp Pro', proficiency: 94, experience: 'Rapid massing & detailed joinery models' },
+            { name: 'Municipal By-law & DCR Compliance', proficiency: 90, experience: 'Floor area, setback & approval sheets' }
+          ]
+        },
+        {
+          category: 'Rendering & 3D Visualization',
+          items: [
+            { name: 'Lumion (12.5 & Pro)', proficiency: 95, experience: 'Photorealistic exteriors, lighting & landscape' },
+            { name: 'D5 Render', proficiency: 90, experience: 'Real-time ray tracing & cinematic walkthroughs' },
+            { name: 'V-Ray & Enscape', proficiency: 85, experience: 'Interior daylight studies & texture realism' },
+            { name: '3D Walkthrough Animation', proficiency: 88, experience: 'Camera pathing, choreography & video montage' }
+          ]
+        },
+        {
+          category: 'Post-Production & Presentation',
+          items: [
+            { name: 'Adobe Photoshop', proficiency: 92, experience: 'Render post-processing & architectural collages' },
+            { name: 'Adobe InDesign', proficiency: 86, experience: 'Client pitch books & portfolio curation' },
+            { name: 'Adobe Premiere Pro', proficiency: 82, experience: 'Cinematic architectural walkthrough editing' }
+          ]
+        }
+      ],
+      contact: {
+        email: 'aditya.kamalakar.arch@gmail.com',
+        phone: '+91 98765 43210',
+        whatsapp: '919876543210',
+        location: 'Mumbai, Maharashtra, India',
+        linkedin: 'https://linkedin.com/in/aditya-kamalakar-arch',
+        instagram: 'https://instagram.com/indraprastha.studio'
+      },
+      jobApplication: {
+        status: 'Open for Opportunities',
+        roles: ['Architectural Designer', 'Junior / Project Architect', 'BIM & Working Drawing Specialist', '3D Architectural Visualizer'],
+        noticePeriod: 'Available for Immediate Joining / Project Consultancies',
+        preferredLocations: ['Mumbai Metropolitan Region', 'Pune', 'Remote / Hybrid Freelance'],
+        summaryForRecruiters: 'Ar. Aditya N. Kamalakar brings a rare synergy of design sensibility, meticulous AutoCAD/Revit working drawing execution, and high-end Lumion/D5 3D rendering. Prepared to step into client-facing concept design, municipality drawing preparation, or technical detailing workflows from day one.'
+      },
+      futureStudio: {
+        name: 'Indraprastha Architects & Design Studio',
+        tagline: 'An emerging architectural practice and design research laboratory.',
+        vision: 'Indraprastha is envisioned as a future multi-disciplinary practice exploring the intersection of contextual Indian modernism, sustainable passive cooling, structural honesty, and high-precision craft. Founded by Ar. Aditya N. Kamalakar, the studio represents an ongoing body of design exploration and freelance commissions.',
+        disclaimer: 'Important Note: "Indraprastha Architects & Design Studio" is presented herein as a proprietary conceptual design identity, research studio, and portfolio umbrella for Ar. Aditya N. Kamalakar. It is not represented as an incorporated corporate entity or pre-registered commercial partnership.',
+        values: [
+          { title: 'Contextual Modernism', description: 'Rooted in climatic sensibilities, local material palettes, and sunlight control tailored to Indian subcontinental conditions.' },
+          { title: 'Tectonic & Detailing Rigor', description: 'Architecture is built on the strength of its working drawings. No concept is complete without resolved joints, waterproofing, and construction logic.' },
+          { title: 'Immersive Visualization', description: 'Leveraging advanced real-time rendering and animation so clients, consultants, and contractors share a common, transparent spatial vision.' },
+          { title: 'Sustainable Materiality', description: 'Prioritizing locally sourced stone, exposed brickwork, lime plasters, responsibly sourced timber, and passive shading over superficial ornament.' }
+        ]
+      }
+    };
+
+    const projectCategories = [
+      { id: 'All', label: 'All Works' },
+      { id: 'Architecture', label: 'Architecture' },
+      { id: 'Residential Design', label: 'Residential Design' },
+      { id: 'Commercial Design', label: 'Commercial Design' },
+      { id: 'Institutional Projects', label: 'Institutional Projects' },
+      { id: 'Working Drawings', label: 'Working Drawings' },
+      { id: 'Architectural Detailing', label: 'Architectural Detailing' },
+      { id: 'Interior Design', label: 'Interior Design' },
+      { id: 'Exterior Rendering', label: 'Exterior Rendering' },
+      { id: 'Interior Rendering', label: 'Interior Rendering' },
+      { id: '3D Walkthroughs', label: '3D Walkthroughs' },
+      { id: 'Freelance Projects', label: 'Freelance Projects' }
+    ];
+
+    const projectsData = [
+      {
+        id: 'kavya-residence-alibaug',
+        title: 'The Courtyard Villa at Alibaug',
+        subtitle: 'Tropical Minimalist Retreat with Exposed Laterite & Water Court',
+        categories: ['Architecture', 'Residential Design', 'Exterior Rendering', 'Working Drawings', 'Freelance Projects'],
+        coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+          'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
+          'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80'
+        ],
+        drawings: [
+          { title: 'Ground Floor Working Plan & Grid', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80', type: 'Working Drawing', scale: '1:50', sheetNo: 'WD-ARC-01' },
+          { title: 'Longitudinal Section Through Central Court', image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1400&q=80', type: 'Cross Section', scale: '1:50', sheetNo: 'WD-SEC-03' },
+          { title: 'Louvered Verandah & Roof Eaves Detail', image: 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?auto=format&fit=crop&w=1400&q=80', type: 'Architectural Detailing', scale: '1:10', sheetNo: 'DET-EAV-01' }
+        ],
+        description: 'A private weekend residence nestled amidst coconut groves in coastal Alibaug. The residence is arranged around a serene water courtyard that acts as the primary microclimatic regulator, encouraging natural cross-ventilation during humid coastal summers.',
+        concept: 'Reinterpreting the traditional Konkan "Chowk" using cast-in-place concrete cantilevers, reclaimed teakwood louvers, and locally dressed laterite stone. Deep overhangs protect habitable volumes from monsoon rains while shading floor-to-ceiling sliding glass portals.',
+        location: 'Alibaug, Maharashtra, India',
+        year: '2025',
+        typology: 'Single Family Residential Villa',
+        siteArea: '12,500 sq. ft.',
+        builtUpArea: '4,850 sq. ft.',
+        softwareUsed: ['AutoCAD 2021', 'SketchUp Pro', 'Lumion 12.5', 'Adobe Photoshop'],
+        myContribution: [
+          'Concept spatial design and courtyard massing studies',
+          'Preparation of full Good-for-Construction (GFC) architectural drawings',
+          'Door, window, and timber louver detailing sheets',
+          'Photorealistic exterior rendering and sun-path lighting simulation in Lumion',
+          'Direct coordination with structural engineers and landscape consultants'
+        ],
+        featured: true,
+        status: 'Detailed Design / Under Construction',
+        walkthroughUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+      },
+      {
+        id: 'zenith-corporate-hub',
+        title: 'Zenith Business Tower & Atrium',
+        subtitle: 'High-Performance Commercial Workspace with Biophilic Double-Skin Facade',
+        categories: ['Architecture', 'Commercial Design', 'Exterior Rendering', 'Working Drawings'],
+        coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+          'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80'
+        ],
+        drawings: [
+          { title: 'Typical High-Rise Office Floor Plan', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80', type: 'Core & Shell Plan', scale: '1:100', sheetNo: 'AR-C-101' },
+          { title: 'Curtain Wall & Aerofoil Louver Junction Detail', image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1400&q=80', type: 'Facade Detail', scale: '1:5', sheetNo: 'DET-FAC-04' }
+        ],
+        description: 'A multi-tenant corporate headquarters in Navi Mumbai designed for agile collaboration and energy reduction. Features a 6-story light-filled public atrium, column-free floor plates, and automated facade louvers.',
+        concept: 'Vertical biophilia and passive solar optimization. The eastern facade features staggered sky gardens cutting solar heat gain coefficient by 32%.',
+        location: 'Navi Mumbai, Maharashtra, India',
+        year: '2024',
+        typology: 'Commercial High-Rise Office',
+        builtUpArea: '185,000 sq. ft.',
+        softwareUsed: ['Autodesk Revit', 'AutoCAD', 'Lumion', 'Photoshop'],
+        myContribution: [
+          'Revit BIM core and egress circulation planning',
+          'Facade unitized curtain wall detail drafting',
+          'High-impact exterior architectural renderings for client investment decks'
+        ],
+        featured: true
+      },
+      {
+        id: 'vedanta-center-learning',
+        title: 'Vedanta School of Fine Arts & Design',
+        subtitle: 'Institutional Campus with Terraced Amphitheaters & Brick Jaali Screens',
+        categories: ['Architecture', 'Institutional Projects', 'Exterior Rendering', 'Working Drawings'],
+        coverImage: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80',
+          'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80'
+        ],
+        drawings: [
+          { title: 'Master Layout & Pedestrian Spine', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80', type: 'Master Plan', scale: '1:500', sheetNo: 'MP-01' }
+        ],
+        description: 'An educational facility dedicated to creative arts and architecture. The design organizes academic studios around an open-air sunken amphitheater that serves as a collective forum for exhibitions.',
+        concept: 'Porous institutional architecture. Perforated brick jaali walls filter harsh sunlight into sculpted light and shadow patterns while fostering uninhibited cross-breeze.',
+        location: 'Pune, Maharashtra, India',
+        year: '2024',
+        typology: 'Institutional / Campus',
+        builtUpArea: '78,000 sq. ft.',
+        softwareUsed: ['AutoCAD', 'SketchUp', 'Lumion 12.5', 'Adobe InDesign'],
+        myContribution: [
+          'Campus zoning and pedestrian spine circulation design',
+          'Parametric brick jaali pattern drafting and material schedules',
+          'Comprehensive master site rendering and daylight shadow analysis'
+        ],
+        featured: true
+      },
+      {
+        id: 'worli-penthouse-interior',
+        title: 'The Monolith Penthouse at Worli',
+        subtitle: 'Bespoke Interior Design with Italian Travertine, Fluted Oak & Warm Brass Accents',
+        categories: ['Interior Design', 'Interior Rendering', 'Architectural Detailing', 'Freelance Projects'],
+        coverImage: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80',
+          'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1600&q=80'
+        ],
+        drawings: [
+          { title: 'Master Suite Furniture & Electrical Layout', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80', type: 'Interior Layout', scale: '1:25', sheetNo: 'INT-FL-02' }
+        ],
+        description: 'A 3,200 sq. ft. sea-facing luxury residence overlooking the Arabian Sea. Articulated through honest tactile surfaces and custom-crafted millwork.',
+        concept: 'A quiet monochromatic material palette where light becomes the ornament. Custom acoustic slatted oak paneling conceals smart automation panels and pivot doors.',
+        location: 'Worli, Mumbai, India',
+        year: '2025',
+        typology: 'High-End Residential Interior',
+        builtUpArea: '3,200 sq. ft.',
+        softwareUsed: ['AutoCAD', 'D5 Render', 'Photoshop'],
+        myContribution: [
+          'Full interior space planning and RCP (Reflected Ceiling Plans)',
+          'Custom cabinetry, wardrobe, and vanity joinery drawings',
+          'Hyper-realistic interior 3D visualization and moodboard presentations'
+        ],
+        featured: true
+      },
+      {
+        id: 'staircase-tectonics-detail',
+        title: 'Suspended Cantilever Tread Staircase & Glass Balustrade',
+        subtitle: 'Comprehensive Architectural Detailing & Structural Steel Fabrication Pack',
+        categories: ['Architectural Detailing', 'Working Drawings', 'Residential Design'],
+        coverImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80'
+        ],
+        drawings: [
+          { title: 'Cantilever Steel Stringer Anchorage & Riser Calculations', image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1400&q=80', type: 'Staircase Detail', scale: '1:10', sheetNo: 'STR-DET-01' }
+        ],
+        description: 'A technical showcase in precision metalwork and timber detailing for a double-height residential atrium. The staircase appears to float weightlessly while resolving torsional deflection within a concealed steel spine beam.',
+        concept: 'Tectonic purity where structural mechanics are revealed as sculpted art.',
+        location: 'Bandra, Mumbai, India',
+        year: '2024',
+        typology: 'Architectural Detailing & Structural Joinery',
+        softwareUsed: ['AutoCAD 2021', 'Autodesk Revit', 'Photoshop'],
+        myContribution: [
+          'Riser-to-tread ergonomic calculations and clearance compliance',
+          'Solid Burma Teak tread sleeve detailing with anti-slip brass inlays',
+          'Shop drawing verification for metal fabrication workshop'
+        ]
+      },
+      {
+        id: 'serenity-pavilion-walkthrough',
+        title: 'The Serenity Pavilion & Landscape Walkthrough',
+        subtitle: 'Cinematic 3D Animation & Exterior Daylight Transition Study',
+        categories: ['3D Walkthroughs', 'Exterior Rendering', 'Architecture', 'Freelance Projects'],
+        coverImage: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80'
+        ],
+        drawings: [
+          { title: 'Landscape Contour & Water Pavilion Plan', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80', type: 'Site Plan', scale: '1:100', sheetNo: 'LS-01' }
+        ],
+        description: 'Commissioned by a private developer to market an exclusive hillside clubhouse in Lonavala. Showcasing morning mist, midday sun penetration, and ambient twilight.',
+        concept: 'Choreographed architectural storytelling using dynamic camera easing and ambient foliage wind physics.',
+        location: 'Lonavala, Maharashtra, India',
+        year: '2025',
+        typology: 'Hospitality & Landscape Visualization',
+        softwareUsed: ['SketchUp Pro', 'Lumion 12.5 Pro', 'D5 Render', 'Adobe Premiere Pro'],
+        myContribution: [
+          'Complete 3D landscape and pavilion modeling from 2D master plans',
+          'Cinematic camera pathing and keyframing',
+          'Color grading and sound design synchronization in Premiere Pro'
+        ],
+        featured: true,
+        walkthroughUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+      },
+      {
+        id: 'gfc-residential-tower-drawings',
+        title: 'Good For Construction (GFC) Master Pack: Skyview Enclave',
+        subtitle: 'Comprehensive Set of Municipal, Column Grid & Masonry Working Drawings',
+        categories: ['Working Drawings', 'Architectural Detailing', 'Residential Design'],
+        coverImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80'
+        ],
+        drawings: [
+          { title: 'Centerline & Column Grid Layout Sheet', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80', type: 'Centerline Plan', scale: '1:100', sheetNo: 'GFC-01' }
+        ],
+        description: 'A complete architectural construction drawing portfolio for a G+14 residential tower demonstrating mastery over municipal guidelines, dimension chains, datum levels, and structural coordination.',
+        concept: 'Zero ambiguity on site. Every dimension string is cross-referenced with structural centerline axes.',
+        location: 'Thane, Maharashtra, India',
+        year: '2024',
+        typology: 'Multi-Family Residential / High-Rise',
+        builtUpArea: '120,000 sq. ft.',
+        softwareUsed: ['AutoCAD 2021', 'Autodesk Revit'],
+        myContribution: [
+          'Generation of column centerline, setting out, and foundation coordinates',
+          'Typical floor masonry and partition wall layout with lintel schedules',
+          'Plumbing riser coordination and sunken slab waterproofing details'
+        ],
+        featured: true
+      },
+      {
+        id: 'minimalist-duplex-render-series',
+        title: 'Atmospheric Daylight Study: Minimalist Duplex',
+        subtitle: 'Hyper-Realistic Interior Visualization Series Exploring Material Warmth',
+        categories: ['Interior Rendering', 'Interior Design', '3D Walkthroughs'],
+        coverImage: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80'
+        ],
+        drawings: [],
+        description: 'A visualization research series exploring indirect skylight, warm limestone surfaces, and bouclé fabric textures across varying hours of daylight.',
+        concept: 'Chiaroscuro in contemporary interior visualization, balancing shadow depth with tactile micro-relief.',
+        location: 'Mumbai, India',
+        year: '2025',
+        typology: 'Visualization Research & Interior Rendering',
+        softwareUsed: ['SketchUp', 'D5 Render', 'Photoshop'],
+        myContribution: [
+          '3D interior modeling, soft furnishing drapery setup',
+          'High-resolution PBR material calibrating (roughness, bump, normal maps)',
+          'Physically accurate sun angles and HDR sky dome setup'
+        ]
+      }
+    ];
+
+    const drawingCategories = [
+      { id: 'All', label: 'All Technical Sheets' },
+      { id: 'Plans', label: 'Plans' },
+      { id: 'Sections', label: 'Sections' },
+      { id: 'Elevations', label: 'Elevations' },
+      { id: 'Construction Drawings', label: 'Construction Drawings' },
+      { id: 'Staircase Details', label: 'Staircase Details' },
+      { id: 'Toilet Details', label: 'Toilet Details' },
+      { id: 'Door-Window Details', label: 'Door-Window Details' },
+      { id: 'Joinery Details', label: 'Joinery Details' }
+    ];
+
+    const technicalDrawingsData = [
+      {
+        id: 'drw-plan-courtyard-residence',
+        sheetNo: 'ARC-P-101',
+        title: 'Ground Level Architectural Working Plan & Setting Out Grid',
+        projectTitle: 'The Courtyard Villa at Alibaug',
+        category: 'Plans',
+        scale: '1:50 @ A1',
+        date: 'OCT 2025',
+        software: 'AutoCAD 2021',
+        previewImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80',
+        description: 'Detailed ground level architectural plan illustrating structural grid lines, wall thicknesses (230mm external laterite / 115mm internal brick), floor finishes, sill & lintel levels, and clear dimension strings.',
+        keyNotes: [
+          'All structural dimensions refer to bare concrete / brickface prior to plaster.',
+          'Datum level ±0.00 corresponds to Finished Floor Level (FFL) of central courtyard.',
+          'Sunk slab of 150mm provided in kitchen, utility, and all attached powder rooms for waterproofing.'
+        ],
+        specs: { sheetSize: 'A1 (841 x 594 mm)', discipline: 'Architectural Working Drawings', stage: 'Good For Construction (GFC)', revisions: 'Rev 03' }
+      },
+      {
+        id: 'drw-sec-longitudinal-atrium',
+        sheetNo: 'ARC-S-201',
+        title: 'Longitudinal Section Through Double-Height Living & Light Court',
+        projectTitle: 'The Courtyard Villa at Alibaug',
+        category: 'Sections',
+        scale: '1:50 @ A1',
+        date: 'NOV 2025',
+        software: 'AutoCAD 2021 / SketchUp',
+        previewImage: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1600&q=80',
+        description: 'Longitudinal section detailing the vertical volumetric transition from the low-slung entry verandah into the double-height central pavilion, including roof truss junctions and clerestory louvers.',
+        keyNotes: [
+          'RCC slab thickness 150mm with 75mm screed & Kota stone paving.',
+          'Clear ceiling height in living expanse maintained at 6.40m below timber tie beams.',
+          'Waterproofing membrane extended 300mm vertically up all perimeter retaining walls.'
+        ],
+        specs: { sheetSize: 'A1 (841 x 594 mm)', discipline: 'Architectural Sections', stage: 'Good For Construction (GFC)', revisions: 'Rev 02' }
+      },
+      {
+        id: 'drw-el-front-facade',
+        sheetNo: 'ARC-E-301',
+        title: 'North-East Primary Entrance Elevation & Material Callouts',
+        projectTitle: 'Vedanta School of Fine Arts & Design',
+        category: 'Elevations',
+        scale: '1:100 @ A1',
+        date: 'AUG 2024',
+        software: 'AutoCAD 2021 / Revit',
+        previewImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?auto=format&fit=crop&w=1600&q=80',
+        description: 'Primary street-facing elevation showing rhythmic terracotta brick jaali screens, cast-in-situ board-marked concrete fascia, cantilevered shading canopies, and rainwater scupper spouts.',
+        keyNotes: [
+          'Wire-cut terracotta brick jaali laid in staggered Flemish bond with MS flat ties.',
+          'Board-marked concrete finished with clear matte silane-siloxane breathable water repellent.',
+          'All exterior parapet copings sloped 1:20 inwards with continuous drip mold grove.'
+        ],
+        specs: { sheetSize: 'A1 (841 x 594 mm)', discipline: 'Architectural Elevations', stage: 'Municipality & Tender Set', revisions: 'Rev 01' }
+      },
+      {
+        id: 'drw-gfc-centerline-grid',
+        sheetNo: 'GFC-CL-01',
+        title: 'Foundation & Column Centerline Setting Out Sheet',
+        projectTitle: 'Skyview Enclave Residential Tower',
+        category: 'Construction Drawings',
+        scale: '1:100 @ A0',
+        date: 'JUL 2024',
+        software: 'AutoCAD 2021',
+        previewImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80',
+        description: 'Master setting out plan establishing Cartesian axes with respect to municipal boundary survey benchmarks. Critical for contractor layout prior to excavation.',
+        keyNotes: [
+          'Do not scale this drawing. Only written numerical dimensions govern on site.',
+          'All column coordinates cross-verified against Structural Consultant drawings STR/FND-04.'
+        ],
+        specs: { sheetSize: 'A0 (1189 x 841 mm)', discipline: 'Civil Setting Out', stage: 'Good For Construction (GFC)', revisions: 'Rev 04' }
+      },
+      {
+        id: 'drw-det-staircase-cantilever',
+        sheetNo: 'DET-STR-401',
+        title: 'Cantilever Steel Stringer & Folded Timber Tread Construction Details',
+        projectTitle: 'Suspended Cantilever Staircase at Bandra',
+        category: 'Staircase Details',
+        scale: '1:10 & 1:2 @ A1',
+        date: 'DEC 2024',
+        software: 'AutoCAD 2021 / Revit',
+        previewImage: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1600&q=80',
+        description: 'Detailed manufacturing and assembly sheet for a floating steel cantilever staircase. Includes weld specifications, base plate anchor bolt embedding, and glass balustrade shoe connection.',
+        keyNotes: [
+          'Treads: 280mm clear go; Risers: 160mm clear rise. Total 19 risers across two flights.',
+          'Solid 45mm Burma Teak treads treated with flame-retardant matte polyurethane sealant.',
+          '12+12mm laminated toughened glass balustrade clamped into recessed continuous base shoe.'
+        ],
+        specs: { sheetSize: 'A1 (841 x 594 mm)', discipline: 'Architectural & Metal Detailing', stage: 'Fabrication & Installation', revisions: 'Rev 02' }
+      },
+      {
+        id: 'drw-det-toilet-plumbing-layout',
+        sheetNo: 'DET-TLT-501',
+        title: 'Master Toilet Flooring, Sunken Slab Waterproofing & Fixture Setouts',
+        projectTitle: 'Worli Monolith Penthouse',
+        category: 'Toilet Details',
+        scale: '1:20 & 1:5 @ A1',
+        date: 'JAN 2025',
+        software: 'AutoCAD 2021',
+        previewImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80',
+        description: 'Comprehensive wet area detailing sheet showing tile alignment grid, sunken slab waterproofing cross-section, concealed diverter heights, and linear floor drain slope.',
+        keyNotes: [
+          'Slope in shower enclosure maintained at 1:60 towards 900mm concealed stainless steel linear drain.',
+          'Double coat elastomeric waterproofing membrane tested under 72-hour ponding test prior to screeding.'
+        ],
+        specs: { sheetSize: 'A1 (841 x 594 mm)', discipline: 'Interior Detailing', stage: 'Good For Construction (GFC)', revisions: 'Rev 03' }
+      },
+      {
+        id: 'drw-det-door-window-schedule',
+        sheetNo: 'DET-DW-601',
+        title: 'Aluminum Slimline Sliding Door, Fixed Glazing & Louver Schedule',
+        projectTitle: 'The Courtyard Villa at Alibaug',
+        category: 'Door-Window Details',
+        scale: '1:20 & 1:2 @ A1',
+        date: 'NOV 2025',
+        software: 'AutoCAD 2021',
+        previewImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?auto=format&fit=crop&w=1600&q=80',
+        description: 'Complete schedule of fenestrations including structural opening sizes, frame profiles, glass specifications (DGU Low-E), weather seals, and lockset ironmongery.',
+        keyNotes: [
+          'Aluminum frames shall be thermal break system with EPDM dual gasketing for coastal monsoon resilience.',
+          'Continuous weep holes provided at outer threshold with concealed drainage track.'
+        ],
+        specs: { sheetSize: 'A1 (841 x 594 mm)', discipline: 'Fenestrations & Joinery', stage: 'Tender & Execution', revisions: 'Rev 01' }
+      },
+      {
+        id: 'drw-det-joinery-fluted-wall',
+        sheetNo: 'DET-JN-701',
+        title: 'Custom Fluted Oak Paneling, Pivot Door & Concealed LED Cove Detail',
+        projectTitle: 'Worli Monolith Penthouse',
+        category: 'Joinery Details',
+        scale: '1:10 & 1:1 @ A1',
+        date: 'FEB 2025',
+        software: 'AutoCAD 2021',
+        previewImage: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1600&q=80',
+        description: 'Full size detailing of solid American White Oak fluted wall paneling, featuring continuous grain matching across an invisible flush pivot door, integrated brass shadow gap, and concealed warm light cove.',
+        keyNotes: [
+          'Flutes: 15mm width x 8mm depth CNC machined in solid white oak slats with open-pore matte PU polish.',
+          'Concealed heavy-duty pivot hinge (FritsJurgens System M) recessed flush into top transom and floor plate.'
+        ],
+        specs: { sheetSize: 'A1 (841 x 594 mm)', discipline: 'Millwork & Joinery', stage: 'Shop Drawing', revisions: 'Rev 02' }
+      }
+    ];
+
+    const freelanceServicesData = [
+      {
+        id: 'arch-planning',
+        title: 'Architectural Planning & Concept Design',
+        shortDesc: 'Site analysis, zoning studies, spatial optimization, and concept schematic layouts tailored to your lifestyle and climate.',
+        typicalDuration: '2 - 3 Weeks',
+        badge: 'Core Architecture',
+        deliverables: ['Site & Climate Analysis', 'Zoning & Setback Verification', 'Schematic Floor Plans (2-3 Options)', '3D Volumetric Studies'],
+        tools: ['AutoCAD', 'SketchUp Pro', 'Revit']
+      },
+      {
+        id: 'working-drawings',
+        title: 'Municipal & Working Drawings (GFC)',
+        shortDesc: 'Accurate, dimensioned Good-For-Construction drawings that eliminate contractor guesswork and avoid costly site mistakes.',
+        typicalDuration: '3 - 4 Weeks',
+        badge: 'Technical Precision',
+        deliverables: ['Column Centerline & Setting Out Plans', 'Floor Architectural Working Plans', 'Cross & Longitudinal Sections', 'Masonry & Sunk Slab Schedules'],
+        tools: ['AutoCAD 2021', 'Revit']
+      },
+      {
+        id: 'construction-detailing',
+        title: 'Construction Detailing & Technical Packs',
+        shortDesc: 'High-detail joinery, staircase sections, wet-area waterproofing, and specialized architectural junctions for builders.',
+        typicalDuration: '1 - 2 Weeks',
+        badge: 'Execution Ready',
+        deliverables: ['Cantilever Staircase Structural Details', 'Sunken Slab Toilet Waterproofing Details', 'Aluminum Thermal Break Window Schedules', 'Railing & Glass Mounting Details'],
+        tools: ['AutoCAD', 'Revit', 'Photoshop']
+      },
+      {
+        id: 'interior-design',
+        title: 'Bespoke Interior Design & Space Planning',
+        shortDesc: 'Transforming raw apartments and villas into warm, bespoke sanctuaries with custom millwork and curated material palettes.',
+        typicalDuration: '3 - 5 Weeks',
+        badge: 'Turnkey Design',
+        deliverables: ['Furniture Spatial Layout & Flow', 'Reflected Ceiling Plans (RCP) & Lighting', 'Custom Wardrobe & Vanity Joinery Sets', 'Material & Hardware Spec Sheets'],
+        tools: ['AutoCAD', 'SketchUp', 'D5 Render']
+      },
+      {
+        id: '3d-modeling',
+        title: '3D Architectural Modeling',
+        shortDesc: 'High-precision 3D geometric modeling from 2D CAD drawings or napkin sketches for architects, developers, and homeowners.',
+        typicalDuration: '3 - 7 Days',
+        badge: 'Fast Turnaround',
+        deliverables: ['Detailed SketchUp / Revit Digital Model', 'Site Topography & Surrounding Massing', 'Clean Component & Layer Hierarchy'],
+        tools: ['SketchUp Pro', 'Revit', 'Rhino']
+      },
+      {
+        id: 'rendering-services',
+        title: 'Photorealistic Interior & Exterior Rendering',
+        shortDesc: 'Cinematic daylighting, authentic PBR textures, and emotionally engaging atmospheric visuals that win pitches and sell properties.',
+        typicalDuration: '4 - 10 Days',
+        badge: 'High Impact',
+        deliverables: ['High-Resolution 4K Exterior Renders', 'Photorealistic 4K Interior Stills', 'Aerial & Drone Perspective Integration'],
+        tools: ['Lumion 12.5 Pro', 'D5 Render', 'Photoshop']
+      },
+      {
+        id: 'walkthrough-animations',
+        title: 'Architectural 3D Walkthroughs & Video Montages',
+        shortDesc: 'Immersive 60fps cinematic animated walkthroughs with smooth camera transitions, ambient sound design, and time-lapse effects.',
+        typicalDuration: '1 - 2 Weeks',
+        badge: 'Premium Showcase',
+        deliverables: ['Full HD / 4K 60fps Animation Clips', 'Curated Camera Choreography', 'Atmospheric Daylight Transitions', 'Post-Processed Video Montage'],
+        tools: ['D5 Render', 'Lumion Pro', 'Premiere Pro']
+      }
+    ];
+
+    // --- APPLICATION ROOT COMPONENT ---
+    function App() {
+      const [activeSection, setActiveSection] = useState('hero');
+      const [isJobMode, setIsJobMode] = useState(true);
+      const [selectedCategory, setSelectedCategory] = useState('All');
+      const [searchQuery, setSearchQuery] = useState('');
+      const [activeModalProject, setActiveModalProject] = useState(null);
+      const [enquiryProjectTitle, setEnquiryProjectTitle] = useState('');
+      const [activeDrawing, setActiveDrawing] = useState(technicalDrawingsData[0]);
+      const [drawingZoom, setDrawingZoom] = useState(100);
+      const [isBlueprintMode, setIsBlueprintMode] = useState(true);
+      const [drawingPos, setDrawingPos] = useState({ x: 0, y: 0 });
+      const [isDragging, setIsDragging] = useState(false);
+      const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
+      // Form State
+      const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        projectType: 'Residential Villa / Bungalow',
+        location: '',
+        approxBudget: '₹25 Lakhs – ₹50 Lakhs',
+        approxArea: '',
+        services: ['Architectural Planning & Concept Design'],
+        message: ''
+      });
+      const [formSubmitted, setFormSubmitted] = useState(false);
+      const [formError, setFormError] = useState('');
+
+      const filteredProjects = useMemo(() => {
+        return projectsData.filter((p) => {
+          const catMatch = selectedCategory === 'All' || p.categories.includes(selectedCategory);
+          const q = searchQuery.toLowerCase().trim();
+          if (!q) return catMatch;
+          return catMatch && (
+            p.title.toLowerCase().includes(q) ||
+            p.subtitle.toLowerCase().includes(q) ||
+            p.location.toLowerCase().includes(q) ||
+            p.softwareUsed.some(s => s.toLowerCase().includes(q))
+          );
+        });
+      }, [selectedCategory, searchQuery]);
+
+      const scrollTo = (id) => {
+        setActiveSection(id);
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      const handleWhatsAppSubmit = () => {
+        if (!formData.fullName.trim() || !formData.phone.trim()) {
+          setFormError('Please provide your name and phone/WhatsApp number.');
+          return;
+        }
+        setFormError('');
+        const text = encodeURIComponent(
+`*ARCHITECTURAL PROJECT ENQUIRY*
+----------------------------------------
+*Client Name:* ${formData.fullName}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email || 'Not specified'}
+*Typology:* ${formData.projectType}
+*Location:* ${formData.location || 'Not specified'}
+*Area:* ${formData.approxArea || 'Not specified'}
+*Budget:* ${formData.approxBudget}
+*Services:*
+${formData.services.map(s => `• ${s}`).join('\n')}
+
+*Notes:* ${formData.message || 'None'}
+----------------------------------------
+Sent via Ar. Aditya N. Kamalakar Portfolio`
+        );
+        window.open(`https://wa.me/${profileData.contact.whatsapp}?text=${text}`, '_blank');
+      };
+
+      const handleEmailSubmit = () => {
+        if (!formData.fullName.trim() || !formData.email.trim()) {
+          setFormError('Please provide your name and email address.');
+          return;
+        }
+        setFormError('');
+        const subject = encodeURIComponent(`Project Enquiry: ${formData.projectType} in ${formData.location || 'India'} - ${formData.fullName}`);
+        const body = encodeURIComponent(
+`ARCHITECTURAL PROJECT ENQUIRY
+Client Name: ${formData.fullName}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Project Typology: ${formData.projectType}
+Location: ${formData.location}
+Approx Area: ${formData.approxArea}
+Estimated Budget: ${formData.approxBudget}
+Services Required: ${formData.services.join(', ')}
+
+Notes:
+${formData.message}`
+        );
+        window.location.href = `mailto:${profileData.contact.email}?subject=${subject}&body=${body}`;
+      };
+
+      const handleDownloadCV = () => {
+        window.print();
+      };
+
+      return (
+        <div className="min-h-screen bg-[#141414] text-[#E0E0E0] selection:bg-[#B8976C] selection:text-[#141414]">
+          {/* Top Fixed Header */}
+          <header className="fixed top-0 left-0 right-0 z-50 bg-[#141414]/95 backdrop-blur-md border-b border-[#262626] py-3.5 px-4 sm:px-8 flex items-center justify-between">
+            <button onClick={() => scrollTo('hero')} className="flex items-center space-x-3 text-left">
+              <div className="w-9 h-9 border border-[#B8976C] flex items-center justify-center bg-[#181818]">
+                <span className="font-serif text-[#B8976C] font-semibold text-base">AK</span>
+              </div>
+              <div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-white text-sm sm:text-base font-serif font-medium tracking-wide">
+                    {profileData.prefix} {profileData.name}
+                  </span>
+                  <span className="text-[10px] uppercase font-mono text-[#B8976C] border border-[#B8976C]/40 px-1">
+                    B.Arch
+                  </span>
+                </div>
+                <p className="text-[11px] text-[#8C8C8C] tracking-wide">Architect & 3D Visualizer</p>
+              </div>
+            </button>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-6 text-xs uppercase tracking-wider font-mono">
+              <button onClick={() => scrollTo('portfolio')} className="hover:text-[#B8976C] transition-colors">Portfolio</button>
+              <button onClick={() => scrollTo('drawings')} className="hover:text-[#B8976C] transition-colors">Technical Drawings</button>
+              <button onClick={() => scrollTo('services')} className="hover:text-[#B8976C] transition-colors">Services</button>
+              <button onClick={() => scrollTo('about')} className="hover:text-[#B8976C] transition-colors">About & Bio</button>
+              <button onClick={() => scrollTo('studio')} className="hover:text-[#B8976C] transition-colors">Future Studio</button>
+              <button onClick={() => scrollTo('contact')} className="hover:text-[#B8976C] transition-colors">Contact</button>
+            </nav>
+
+            {/* Right Buttons: Job Mode & CTA */}
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <button
+                onClick={() => setIsJobMode(!isJobMode)}
+                className={`text-[11px] font-mono uppercase px-2.5 py-1.5 border transition-all flex items-center space-x-1.5 ${
+                  isJobMode ? 'border-[#B8976C] text-[#E5C79E] bg-[#B8976C]/10' : 'border-[#333] text-[#777]'
+                }`}
+                title="Toggle Recruiter Application Dossier"
+              >
+                <span className={`w-1.5 h-1.5 rounded-full ${isJobMode ? 'bg-[#4ade80] animate-pulse' : 'bg-[#555]'}`} />
+                <span>{isJobMode ? 'Job Mode On' : 'Job Mode'}</span>
+              </button>
+
+              <button
+                onClick={() => scrollTo('enquiry-section')}
+                className="text-xs uppercase tracking-wider bg-[#B8976C] hover:bg-[#A38054] text-[#141414] font-semibold px-3 sm:px-4 py-2 transition-all shadow-sm"
+              >
+                Hire Me
+              </button>
+            </div>
+          </header>
+
+          <main className="pt-20">
+            {/* HERO SECTION */}
+            <section id="hero" className="relative min-h-[90vh] flex items-center justify-center py-20 px-4 text-center bg-[#141414] overflow-hidden">
+              {/* Drafting grid background */}
+              <div
+                className="absolute inset-0 opacity-10 pointer-events-none"
+                style={{
+                  backgroundImage: 'linear-gradient(to right, #B8976C 1px, transparent 1px), linear-gradient(to bottom, #B8976C 1px, transparent 1px)',
+                  backgroundSize: '80px 80px'
+                }}
+              />
+
+              <div className="relative z-10 max-w-4xl mx-auto space-y-6">
+                <div className="inline-flex items-center space-x-2 border border-[#B8976C]/40 bg-[#1A1A1A] px-3 py-1">
+                  <span className="w-2 h-2 bg-[#B8976C] rounded-full" />
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#E5C79E]">
+                    Professional Architectural Portfolio & Studio Foundation
+                  </span>
+                </div>
+
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif text-white font-normal">
+                  <span className="text-[#B8976C] font-light">{profileData.prefix} </span>
+                  {profileData.name}
+                </h1>
+
+                <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-base text-[#A0A0A0] uppercase tracking-widest font-sans">
+                  <span>Architect</span>
+                  <span className="text-[#B8976C]">•</span>
+                  <span>Architectural Designer</span>
+                  <span className="text-[#B8976C]">•</span>
+                  <span>3D Visualizer</span>
+                </div>
+
+                <div className="max-w-2xl mx-auto py-5 border-y border-[#262626]">
+                  <p className="text-xl sm:text-3xl font-serif text-[#F5F3EF] italic">
+                    "{profileData.headline}"
+                  </p>
+                </div>
+
+                <p className="max-w-xl mx-auto text-xs sm:text-sm text-[#8C8C8C] leading-relaxed">
+                  {profileData.subheadline}
+                </p>
+
+                {/* 3 Core Buttons Requested */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                  <button
+                    onClick={() => scrollTo('portfolio')}
+                    className="w-full sm:w-auto px-7 py-3.5 bg-[#B8976C] hover:bg-[#A38054] text-[#141414] font-medium text-xs uppercase tracking-widest transition-all shadow-md"
+                  >
+                    Explore My Work
+                  </button>
+                  <button
+                    onClick={() => scrollTo('services')}
+                    className="w-full sm:w-auto px-7 py-3.5 border border-[#444] hover:border-[#B8976C] text-white hover:text-[#B8976C] font-medium text-xs uppercase tracking-widest transition-all bg-[#181818]/60"
+                  >
+                    View My Services
+                  </button>
+                  <button
+                    onClick={() => scrollTo('enquiry-section')}
+                    className="w-full sm:w-auto px-7 py-3.5 border-2 border-[#B8976C] text-[#E5C79E] hover:bg-[#B8976C] hover:text-[#141414] font-medium text-xs uppercase tracking-widest transition-all"
+                  >
+                    Hire Me
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {/* RECRUITER / JOB APPLICATION MODE BANNER */}
+            {isJobMode && (
+              <section className="max-w-7xl mx-auto px-4 sm:px-8 mb-16">
+                <div className="bg-[#181818] border-2 border-[#B8976C]/40 p-6 sm:p-8 relative">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#282828]">
+                    <div>
+                      <div className="flex items-center space-x-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#4ade80] animate-pulse" />
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-[#4ade80]">
+                          Job Application & Hiring Dossier Active
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-serif text-white mt-1">
+                        Candidate Summary: Ar. Aditya N. Kamalakar
+                      </h3>
+                      <p className="text-xs text-[#888]">
+                        B.Arch graduate from Dr. Baliram Hiray College of Architecture, Mumbai
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-3">
+                      <button
+                        onClick={handleDownloadCV}
+                        className="px-4 py-2 bg-[#B8976C] text-[#141414] font-bold text-xs uppercase tracking-wider hover:bg-[#A38054] transition-colors"
+                      >
+                        📄 Print / Save Resume (PDF)
+                      </button>
+                      <button
+                        onClick={() => scrollTo('contact')}
+                        className="px-4 py-2 border border-[#B8976C] text-[#E5C79E] text-xs uppercase tracking-wider hover:bg-[#B8976C]/20 transition-colors"
+                      >
+                        Contact for Architecture Roles
+                      </button>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-[#CCC] italic py-3 leading-relaxed">
+                    "{profileData.jobApplication.summaryForRecruiters}"
+                  </p>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-3 border-t border-[#262626] text-xs">
+                    <div>
+                      <span className="text-[10px] font-mono text-[#777] uppercase block">Availability:</span>
+                      <span className="text-[#4ade80] font-mono">{profileData.jobApplication.noticePeriod}</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono text-[#777] uppercase block">Location:</span>
+                      <span className="text-white">Mumbai MMR / Hybrid</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono text-[#777] uppercase block">Core CAD/BIM:</span>
+                      <span className="text-[#DDD] font-mono">AutoCAD, Revit, SketchUp</span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono text-[#777] uppercase block">Core Rendering:</span>
+                      <span className="text-[#DDD] font-mono">Lumion 12.5, D5 Render</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* PROJECT PORTFOLIO SECTION */}
+            <section id="portfolio" className="max-w-7xl mx-auto px-4 sm:px-8 py-16 border-t border-[#222]">
+              <div className="max-w-3xl mb-8">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#B8976C] block mb-2">
+                  Project Portfolio
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-serif text-white font-normal mb-3">
+                  Selected Architectural & Visualization Works
+                </h2>
+                <p className="text-xs sm:text-sm text-[#8C8C8C] leading-relaxed">
+                  Filterable portfolio covering residential villas, commercial towers, institutional campuses,
+                  municipal working drawings, architectural construction detailing, bespoke interiors, and 3D walkthroughs.
+                </p>
+              </div>
+
+              {/* Filters & Search */}
+              <div className="mb-8 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#282828]">
+                  <span className="text-xs font-mono text-[#888]">
+                    Showing <strong className="text-white">{filteredProjects.length}</strong> works
+                  </span>
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search projects, software, city..."
+                    className="w-full sm:w-64 bg-[#181818] border border-[#333] text-xs px-3 py-2 text-white focus:outline-none focus:border-[#B8976C]"
+                  />
+                </div>
+
+                <div className="flex items-center gap-2 overflow-x-auto pb-2">
+                  {projectCategories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => setSelectedCategory(cat.id)}
+                      className={`whitespace-nowrap px-3 py-1.5 text-xs font-mono border transition-all ${
+                        selectedCategory === cat.id
+                          ? 'bg-[#B8976C] text-[#141414] border-[#B8976C] font-bold'
+                          : 'bg-[#181818] text-[#888] border-[#2A2A2A] hover:text-white'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Projects Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredProjects.map((proj) => (
+                  <div
+                    key={proj.id}
+                    onClick={() => setActiveModalProject(proj)}
+                    className="group bg-[#181818] border border-[#282828] hover:border-[#B8976C]/60 p-4 cursor-pointer transition-all hover:-translate-y-1"
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden bg-[#111] mb-4">
+                      <img
+                        src={proj.coverImage}
+                        alt={proj.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                      />
+                      <div className="absolute top-2 left-2 flex gap-1">
+                        {proj.featured && (
+                          <span className="bg-[#B8976C] text-[#141414] text-[9px] font-mono font-bold px-1.5 py-0.5">
+                            Featured
+                          </span>
+                        )}
+                        <span className="bg-black/80 text-[10px] font-mono px-1.5 py-0.5 text-white">
+                          {proj.year}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-2 right-2 bg-black/85 text-[10px] font-mono text-[#AAA] px-2 py-0.5">
+                        {proj.location}
+                      </div>
+                      {proj.drawings && proj.drawings.length > 0 && (
+                        <div className="absolute bottom-2 left-2 bg-[#B8976C]/90 text-black text-[9px] font-mono font-bold px-1.5 py-0.5">
+                          📐 {proj.drawings.length} Drawings
+                        </div>
+                      )}
+                    </div>
+
+                    <span className="text-[10px] font-mono uppercase text-[#B8976C] block mb-1">
+                      {proj.typology}
+                    </span>
+                    <h3 className="text-base font-serif font-medium text-white group-hover:text-[#E5C79E] transition-colors mb-1">
+                      {proj.title}
+                    </h3>
+                    <p className="text-xs text-[#888] line-clamp-2 leading-relaxed mb-3">
+                      {proj.subtitle}
+                    </p>
+
+                    <div className="pt-2 border-t border-[#242424] text-[11px] text-[#AAA] italic mb-3">
+                      "{proj.myContribution[0]}"
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs font-mono pt-1">
+                      <div className="flex gap-1">
+                        {proj.softwareUsed.slice(0, 2).map((s, idx) => (
+                          <span key={idx} className="bg-[#222] text-[#888] px-1.5 py-0.5 text-[9px]">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                      <span className="text-[#B8976C] group-hover:translate-x-1 transition-transform">
+                        Details →
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* TECHNICAL DRAWING GALLERY */}
+            <section id="drawings" className="max-w-7xl mx-auto px-4 sm:px-8 py-16 border-t border-[#222]">
+              <div className="max-w-3xl mb-8">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#B8976C] block mb-2">
+                  Tectonic Detailing Studio
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-serif text-white font-normal mb-3">
+                  Technical Drawing Gallery
+                </h2>
+                <p className="text-xs sm:text-sm text-[#8C8C8C] leading-relaxed">
+                  Interactive blueprint sheet viewer for architectural plans, sections, elevations,
+                  construction drawings, staircase details, toilet details, door-window schedules, and joinery details.
+                </p>
+              </div>
+
+              {/* Drawing Categories Selector */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6">
+                {drawingCategories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      const match = technicalDrawingsData.find(d => cat.id === 'All' || d.category === cat.id);
+                      if (match) setActiveDrawing(match);
+                    }}
+                    className={`whitespace-nowrap px-3 py-1.5 text-xs font-mono border transition-all ${
+                      activeDrawing.category === cat.id || (cat.id === 'All' && activeDrawing)
+                        ? 'border-[#B8976C] bg-[#B8976C] text-[#141414] font-bold'
+                        : 'border-[#2D2D2D] bg-[#181818] text-[#888] hover:text-white'
+                    }`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Zoomable Drawing Inspector */}
+              <div className="bg-[#121212] border border-[#2A2A2A] p-4 mb-6">
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#242424] text-xs font-mono">
+                  <div className="flex items-center space-x-2">
+                    <span className="bg-[#B8976C] text-[#141414] font-bold px-2 py-0.5">
+                      {activeDrawing.sheetNo}
+                    </span>
+                    <span className="text-white font-medium">{activeDrawing.title}</span>
+                  </div>
+
+                  {/* Zoom Controls */}
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => setIsBlueprintMode(!isBlueprintMode)}
+                      className="px-2 py-1 text-[11px] border border-[#444] text-[#8bc34a]"
+                    >
+                      {isBlueprintMode ? 'Blueprint Mode' : 'White Paper'}
+                    </button>
+                    <button
+                      onClick={() => setDrawingZoom(Math.max(drawingZoom - 25, 100))}
+                      className="px-2 py-1 bg-[#222] text-white hover:bg-[#333]"
+                    >
+                      －
+                    </button>
+                    <span className="text-[#C5A880] w-12 text-center">{drawingZoom}%</span>
+                    <button
+                      onClick={() => setDrawingZoom(Math.min(drawingZoom + 25, 300))}
+                      className="px-2 py-1 bg-[#222] text-white hover:bg-[#333]"
+                    >
+                      ＋
+                    </button>
+                    <button
+                      onClick={() => { setDrawingZoom(100); setDrawingPos({ x: 0, y: 0 }); }}
+                      className="px-2 py-1 border border-[#444] text-[#888] hover:text-white text-[10px]"
+                    >
+                      Reset
+                    </button>
+                  </div>
+                </div>
+
+                {/* Canvas */}
+                <div
+                  onMouseDown={(e) => {
+                    if (drawingZoom > 100) {
+                      setIsDragging(true);
+                      setDragStart({ x: e.clientX - drawingPos.x, y: e.clientY - drawingPos.y });
+                    }
+                  }}
+                  onMouseMove={(e) => {
+                    if (isDragging) {
+                      setDrawingPos({ x: e.clientX - dragStart.x, y: e.clientY - dragStart.y });
+                    }
+                  }}
+                  onMouseUp={() => setIsDragging(false)}
+                  onMouseLeave={() => setIsDragging(false)}
+                  className={`relative aspect-[16/9] overflow-hidden flex items-center justify-center p-6 ${
+                    isBlueprintMode ? 'bg-[#091420]' : 'bg-[#F5F3EC]'
+                  } ${drawingZoom > 100 ? (isDragging ? 'cursor-grabbing' : 'cursor-grab') : 'cursor-default'}`}
+                >
+                  <div
+                    style={{
+                      transform: `translate(${drawingPos.x}px, ${drawingPos.y}px) scale(${drawingZoom / 100})`,
+                      transition: isDragging ? 'none' : 'transform 0.2s ease-out'
+                    }}
+                    className="max-w-full max-h-full relative flex flex-col items-center"
+                  >
+                    <img
+                      src={activeDrawing.previewImage}
+                      alt={activeDrawing.title}
+                      className={`max-w-full max-h-[55vh] object-contain ${
+                        isBlueprintMode ? 'mix-blend-screen opacity-90' : 'mix-blend-multiply opacity-80'
+                      }`}
+                      draggable={false}
+                    />
+
+                    {/* Architectural Title Block overlay */}
+                    <div className={`mt-2 p-2 border text-[9px] font-mono grid grid-cols-3 gap-2 w-full ${
+                      isBlueprintMode ? 'border-[#38bdf8]/40 bg-[#060c14]/90 text-[#93c5fd]' : 'border-[#333] bg-[#EAE7DF] text-[#111]'
+                    }`}>
+                      <div>PROJECT: {activeDrawing.projectTitle}</div>
+                      <div>SCALE: {activeDrawing.scale}</div>
+                      <div>STAGE: {activeDrawing.specs.stage}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-3 text-xs text-[#8C8C8C] flex flex-col sm:flex-row justify-between gap-2 border-t border-[#222]">
+                  <div>
+                    <span className="text-[#B8976C] font-mono uppercase text-[10px] block">Drawing Description:</span>
+                    <p className="text-white mt-0.5">{activeDrawing.description}</p>
+                  </div>
+                  <div className="font-mono text-[11px] text-[#777] text-right">
+                    Software: {activeDrawing.software} • Size: {activeDrawing.specs.sheetSize}
+                  </div>
+                </div>
+              </div>
+
+              {/* Thumbnails to choose sheet */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {technicalDrawingsData.map((d) => (
+                  <button
+                    key={d.id}
+                    onClick={() => { setActiveDrawing(d); setDrawingZoom(100); setDrawingPos({ x: 0, y: 0 }); }}
+                    className={`text-left p-2.5 border transition-all ${
+                      activeDrawing.id === d.id ? 'border-[#B8976C] bg-[#1C1C1C]' : 'border-[#262626] bg-[#161616] opacity-70 hover:opacity-100'
+                    }`}
+                  >
+                    <span className="text-[10px] font-mono text-[#B8976C] block">{d.sheetNo} • {d.category}</span>
+                    <span className="text-xs text-white truncate block font-medium mt-0.5">{d.title}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            {/* FREELANCE SERVICES SECTION */}
+            <section id="services" className="max-w-7xl mx-auto px-4 sm:px-8 py-16 border-t border-[#222]">
+              <div className="max-w-3xl mb-12">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#B8976C] block mb-2">
+                  Freelance Practice & Consultancies
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-serif text-white font-normal mb-3">
+                  Architectural & Visualization Services
+                </h2>
+                <p className="text-xs sm:text-sm text-[#8C8C8C] leading-relaxed">
+                  Tailored services for homeowners, developers, and partner architecture studios.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                {freelanceServicesData.map((srv) => (
+                  <div key={srv.id} className="bg-[#181818] border border-[#282828] hover:border-[#B8976C] p-6 flex flex-col justify-between transition-all">
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-[10px] font-mono text-[#B8976C] uppercase bg-[#B8976C]/10 px-2 py-0.5 border border-[#B8976C]/30">
+                          {srv.badge}
+                        </span>
+                        <span className="text-xs font-mono text-[#777]">Est. {srv.typicalDuration}</span>
+                      </div>
+                      <h3 className="text-lg font-serif text-white font-medium mb-2">{srv.title}</h3>
+                      <p className="text-xs text-[#8C8C8C] mb-4 leading-relaxed">{srv.shortDesc}</p>
+
+                      <div className="space-y-1 pt-3 border-t border-[#242424] mb-4">
+                        <span className="text-[10px] font-mono text-[#777] uppercase block mb-1">Deliverables:</span>
+                        {srv.deliverables.map((del, i) => (
+                          <div key={i} className="text-xs text-[#BBB] flex items-center space-x-1.5">
+                            <span className="text-[#B8976C]">✓</span>
+                            <span>{del}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-[#242424] flex justify-between items-center">
+                      <div className="flex gap-1">
+                        {srv.tools.map((t, i) => (
+                          <span key={i} className="text-[9px] font-mono bg-[#222] text-[#888] px-1 py-0.5">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <button
+                        onClick={() => {
+                          setFormData({ ...formData, services: [srv.title] });
+                          scrollTo('enquiry-section');
+                        }}
+                        className="text-xs font-mono text-[#B8976C] hover:text-white"
+                      >
+                        Select Service →
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* PROJECT ENQUIRY FORM */}
+              <div id="enquiry-section" className="bg-[#181818] border border-[#2E2E2E] p-6 sm:p-10">
+                {formSubmitted ? (
+                  <div className="py-12 text-center space-y-4">
+                    <div className="w-12 h-12 bg-[#B8976C]/20 border border-[#B8976C] text-[#B8976C] rounded-full flex items-center justify-center mx-auto text-xl">
+                      ✓
+                    </div>
+                    <h3 className="text-2xl font-serif text-white">Enquiry Logged Successfully</h3>
+                    <p className="text-xs text-[#888] max-w-md mx-auto">
+                      Ar. Aditya N. Kamalakar will review your brief and reply within 24 hours.
+                    </p>
+                    <button
+                      onClick={handleWhatsAppSubmit}
+                      className="px-5 py-2.5 bg-[#25D366] text-black font-semibold text-xs uppercase"
+                    >
+                      Follow up on WhatsApp
+                    </button>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    <div>
+                      <span className="text-[10px] font-mono text-[#E5C79E] uppercase tracking-widest block mb-1">
+                        Direct Architectural Commission
+                      </span>
+                      <h3 className="text-2xl font-serif text-white">Project Enquiry & Quote Generator</h3>
+                      <p className="text-xs text-[#888]">
+                        Fill out your requirements below to instantly generate a pre-filled WhatsApp message or Email.
+                      </p>
+                    </div>
+
+                    {formError && (
+                      <div className="p-3 bg-red-950/40 border border-red-500 text-red-200 text-xs">
+                        ⚠️ {formError}
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-[11px] font-mono text-[#AAA] mb-1">Your Full Name *</label>
+                        <input
+                          type="text"
+                          value={formData.fullName}
+                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                          placeholder="e.g., Rajesh Sharma"
+                          className="w-full bg-[#121212] border border-[#333] text-white text-xs p-2.5 focus:outline-none focus:border-[#B8976C]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[11px] font-mono text-[#AAA] mb-1">Email Address *</label>
+                        <input
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          placeholder="rajesh@domain.com"
+                          className="w-full bg-[#121212] border border-[#333] text-white text-xs p-2.5 focus:outline-none focus:border-[#B8976C]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[11px] font-mono text-[#AAA] mb-1">Phone / WhatsApp *</label>
+                        <input
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="+91 98200 XXXXX"
+                          className="w-full bg-[#121212] border border-[#333] text-white text-xs p-2.5 focus:outline-none focus:border-[#B8976C]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-[11px] font-mono text-[#AAA] mb-1">Project Typology</label>
+                        <select
+                          value={formData.projectType}
+                          onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                          className="w-full bg-[#121212] border border-[#333] text-white text-xs p-2.5 focus:outline-none focus:border-[#B8976C]"
+                        >
+                          <option>Residential Villa / Bungalow</option>
+                          <option>Apartment Interior Design</option>
+                          <option>Commercial Office Space</option>
+                          <option>Retail Boutique / Showroom</option>
+                          <option>3D Visualization & Walkthrough Only</option>
+                          <option>Working Drawing Package Only</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-[11px] font-mono text-[#AAA] mb-1">Location (City, State)</label>
+                        <input
+                          type="text"
+                          value={formData.location}
+                          onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                          placeholder="e.g., Alibaug, Mumbai, Pune"
+                          className="w-full bg-[#121212] border border-[#333] text-white text-xs p-2.5 focus:outline-none focus:border-[#B8976C]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[11px] font-mono text-[#AAA] mb-1">Estimated Budget</label>
+                        <select
+                          value={formData.approxBudget}
+                          onChange={(e) => setFormData({ ...formData, approxBudget: e.target.value })}
+                          className="w-full bg-[#121212] border border-[#333] text-white text-xs p-2.5 focus:outline-none focus:border-[#B8976C]"
+                        >
+                          <option>Under ₹25 Lakhs</option>
+                          <option>₹25 Lakhs – ₹50 Lakhs</option>
+                          <option>₹50 Lakhs – ₹1 Crore</option>
+                          <option>₹1 Crore – ₹3 Crores</option>
+                          <option>₹3 Crores+</option>
+                          <option>Consultancy Fee Only</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-mono text-[#AAA] mb-1">Brief Description / Notes</label>
+                      <textarea
+                        rows={3}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Tell me about your site, plot size, preferences, or timeline..."
+                        className="w-full bg-[#121212] border border-[#333] text-white text-xs p-2.5 focus:outline-none focus:border-[#B8976C]"
+                      />
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="pt-4 border-t border-[#282828] flex flex-wrap items-center justify-between gap-3">
+                      <div className="flex gap-3">
+                        <button
+                          type="button"
+                          onClick={handleWhatsAppSubmit}
+                          className="px-5 py-2.5 bg-[#25D366] hover:bg-[#1EBE5D] text-black font-semibold text-xs uppercase tracking-wider flex items-center space-x-1.5"
+                        >
+                          <span>💬 Send via WhatsApp</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleEmailSubmit}
+                          className="px-5 py-2.5 border border-[#B8976C] text-[#E5C79E] hover:bg-[#B8976C] hover:text-[#141414] font-medium text-xs uppercase tracking-wider transition-colors"
+                        >
+                          <span>✉ Send via Email</span>
+                        </button>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (!formData.fullName || (!formData.phone && !formData.email)) {
+                            setFormError('Please enter your name and at least one contact channel.');
+                            return;
+                          }
+                          setFormError('');
+                          setFormSubmitted(true);
+                        }}
+                        className="px-6 py-2.5 bg-[#B8976C] text-[#141414] font-bold text-xs uppercase tracking-wider hover:bg-[#A38054]"
+                      >
+                        Submit Brief
+                      </button>
+                    </div>
+
+                    <div className="text-[10px] font-mono text-[#666]">
+                      Configured placeholder contact: {profileData.contact.email} • {profileData.contact.phone}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
+
+            {/* ABOUT & BIOGRAPHY SECTION */}
+            <section id="about" className="max-w-7xl mx-auto px-4 sm:px-8 py-16 border-t border-[#222]">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div className="lg:col-span-7 space-y-4">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#B8976C] block">
+                    Professional Biography
+                  </span>
+                  <h2 className="text-3xl sm:text-5xl font-serif text-white font-normal">
+                    Architecture Grounded in Reality, Visualized with Poetics
+                  </h2>
+                  <div className="space-y-3 text-xs sm:text-sm text-[#AAA] leading-relaxed">
+                    {profileData.bioParagraphs.map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-[#242424]">
+                    <span className="text-xs font-mono uppercase text-[#B8976C] block mb-2">Core Focus Areas:</span>
+                    <div className="flex flex-wrap gap-2">
+                      {profileData.interests.map((it, i) => (
+                        <span key={i} className="text-xs bg-[#1A1A1A] border border-[#333] px-2.5 py-1 text-white">
+                          {it}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* College credentials card */}
+                <div className="lg:col-span-5 bg-[#181818] border-2 border-[#B8976C]/40 p-6 space-y-4">
+                  <span className="text-[10px] font-mono uppercase text-[#B8976C] block">Academic Foundation</span>
+                  <h3 className="text-xl font-serif text-white">{profileData.education.institution}</h3>
+                  <div className="text-xs font-mono text-[#E5C79E]">{profileData.education.degree} • Mumbai</div>
+                  <p className="text-xs text-[#888] leading-relaxed">{profileData.education.description}</p>
+                  <div className="space-y-1.5 pt-3 border-t border-[#282828]">
+                    {profileData.education.coreFocus.map((f, i) => (
+                      <div key={i} className="text-xs text-[#BBB] flex items-center space-x-1.5">
+                        <span className="text-[#B8976C]">▸</span>
+                        <span>{f}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Software Skills */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-8 border-t border-[#242424]">
+                {profileData.softwareSkills.map((cat, i) => (
+                  <div key={i} className="bg-[#181818] border border-[#282828] p-5 space-y-3">
+                    <h4 className="text-xs font-mono uppercase text-[#E5C79E] pb-2 border-b border-[#2A2A2A]">
+                      {cat.category}
+                    </h4>
+                    {cat.items.map((it, j) => (
+                      <div key={j} className="space-y-1">
+                        <div className="flex justify-between text-xs">
+                          <span className="text-white">{it.name}</span>
+                          <span className="text-[#B8976C] font-mono text-[10px]">{it.proficiency}%</span>
+                        </div>
+                        <div className="h-1 bg-[#262626]">
+                          <div className="h-full bg-[#B8976C]" style={{ width: `${it.proficiency}%` }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* FUTURE STUDIO SECTION */}
+            <section id="studio" className="max-w-7xl mx-auto px-4 sm:px-8 py-16 border-t border-[#222]">
+              <div className="max-w-3xl mb-8">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#B8976C] block mb-2">
+                  Future Practice Vision
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-serif text-white font-normal mb-2">
+                  {profileData.futureStudio.name}
+                </h2>
+                <p className="text-sm font-serif italic text-[#C5A880] mb-4">
+                  "{profileData.futureStudio.tagline}"
+                </p>
+                <p className="text-xs sm:text-sm text-[#8C8C8C] leading-relaxed">
+                  {profileData.futureStudio.vision}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                {profileData.futureStudio.values.map((v, i) => (
+                  <div key={i} className="bg-[#181818] border border-[#282828] p-5">
+                    <span className="text-xl font-serif text-[#B8976C] block mb-2">0{i + 1}</span>
+                    <h4 className="text-sm font-serif text-white font-medium mb-1">{v.title}</h4>
+                    <p className="text-xs text-[#888] leading-relaxed">{v.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-[#161616] border border-[#333] p-4 text-xs text-[#777] leading-relaxed">
+                <span className="font-mono text-[#999] uppercase block mb-0.5">Professional Disclosure:</span>
+                {profileData.futureStudio.disclaimer}
+              </div>
+            </section>
+
+            {/* CONTACT SECTION */}
+            <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-8 py-16 border-t border-[#222]">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div className="lg:col-span-6 space-y-4">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#B8976C] block">
+                    Direct Contact Channels
+                  </span>
+                  <h2 className="text-3xl sm:text-5xl font-serif text-white font-normal">
+                    Let's Build or Collaborate
+                  </h2>
+                  <p className="text-xs sm:text-sm text-[#8C8C8C] leading-relaxed">
+                    Available for architectural positions, freelance drafting and working drawings,
+                    interior transformations, and 3D visualization.
+                  </p>
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <button
+                      onClick={() => window.open(`https://wa.me/${profileData.contact.whatsapp}`, '_blank')}
+                      className="px-5 py-3 bg-[#25D366] text-black font-semibold text-xs uppercase"
+                    >
+                      💬 WhatsApp Direct
+                    </button>
+                    <a
+                      href={`mailto:${profileData.contact.email}`}
+                      className="px-5 py-3 border border-[#B8976C] text-[#E5C79E] text-xs uppercase"
+                    >
+                      ✉ Send Email
+                    </a>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                  <div className="bg-[#181818] border border-[#282828] p-5 space-y-1">
+                    <span className="text-[10px] font-mono text-[#B8976C] uppercase block">Official Email</span>
+                    <div className="text-white font-mono break-all">{profileData.contact.email}</div>
+                  </div>
+                  <div className="bg-[#181818] border border-[#282828] p-5 space-y-1">
+                    <span className="text-[10px] font-mono text-[#B8976C] uppercase block">WhatsApp / Phone</span>
+                    <div className="text-white font-mono">{profileData.contact.phone}</div>
+                  </div>
+                  <div className="bg-[#181818] border border-[#282828] p-5 space-y-1">
+                    <span className="text-[10px] font-mono text-[#B8976C] uppercase block">Location</span>
+                    <div className="text-white font-serif">{profileData.contact.location}</div>
+                  </div>
+                  <div className="bg-[#181818] border border-[#282828] p-5 space-y-1">
+                    <span className="text-[10px] font-mono text-[#B8976C] uppercase block">Networks</span>
+                    <div className="text-[#AAA] space-x-3">
+                      <a href={profileData.contact.linkedin} target="_blank" className="hover:text-white">LinkedIn</a>
+                      <a href={profileData.contact.instagram} target="_blank" className="hover:text-white">Instagram</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+
+          {/* FOOTER */}
+          <footer className="bg-[#101010] border-t border-[#222] py-12 px-4 sm:px-8 text-xs text-[#777]">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+              <div>
+                © {new Date().getFullYear()} Ar. Aditya N. Kamalakar (B.Arch, Dr. Baliram Hiray College of Architecture, Mumbai). All rights reserved.
+              </div>
+              <div className="flex items-center space-x-6">
+                <span className="italic text-[11px] text-[#555]">Indraprastha Architects & Design Studio (Future Studio Identity)</span>
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-[#AAA] hover:text-white font-mono uppercase text-[10px]"
+                >
+                  Back to Top ↑
+                </button>
+              </div>
+            </div>
+          </footer>
+
+          {/* PROJECT DETAIL MODAL */}
+          {activeModalProject && (
+            <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+              <div className="bg-[#181818] border border-[#333] w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 space-y-6 text-white relative">
+                <div className="flex justify-between items-start border-b border-[#282828] pb-3">
+                  <div>
+                    <span className="text-[10px] font-mono text-[#B8976C] uppercase block">{activeModalProject.typology}</span>
+                    <h2 className="text-2xl font-serif">{activeModalProject.title}</h2>
+                    <span className="text-xs text-[#777] font-mono">{activeModalProject.location} • {activeModalProject.year}</span>
+                  </div>
+                  <button onClick={() => setActiveModalProject(null)} className="text-[#888] hover:text-white text-lg">✕</button>
+                </div>
+
+                <div className="aspect-[16/10] overflow-hidden bg-black">
+                  <img src={activeModalProject.coverImage} alt={activeModalProject.title} className="w-full h-full object-cover" />
+                </div>
+
+                <div className="space-y-3">
+                  <h4 className="text-xs font-mono uppercase text-[#B8976C]">Design Concept & Scope</h4>
+                  <p className="text-xs text-[#CCC] leading-relaxed">{activeModalProject.description}</p>
+                </div>
+
+                <div className="p-4 bg-[#141414] border border-[#262626]">
+                  <span className="text-[10px] font-mono uppercase text-[#B8976C] block mb-2">Ar. Aditya's Specific Contribution:</span>
+                  <ul className="text-xs text-[#AAA] space-y-1">
+                    {activeModalProject.myContribution.map((c, i) => (
+                      <li key={i}>• {c}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex justify-between items-center pt-3 border-t border-[#262626]">
+                  <button
+                    onClick={() => {
+                      setFormData({ ...formData, message: `Inquiring about project similar to ${activeModalProject.title}` });
+                      setActiveModalProject(null);
+                      scrollTo('enquiry-section');
+                    }}
+                    className="px-4 py-2 bg-[#B8976C] text-[#141414] font-bold text-xs uppercase"
+                  >
+                    Inquire Similar Project
+                  </button>
+                  <button onClick={() => setActiveModalProject(null)} className="text-xs text-[#888] hover:text-white">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
